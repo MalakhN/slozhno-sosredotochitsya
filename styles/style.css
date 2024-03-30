@@ -1,13 +1,13 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  background-image: url(../images/cover-image-dark.png);
+  background-image: var(--background-image);
   background-color: var(--background-color, #000028);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: "IBM Plex mono";
-  color: #000028;
+  font-family: var(--main-font);
   max-width: 1024px;
   min-width: 375px;
   margin: 0 auto;
@@ -24,8 +24,8 @@
   position: absolute;
   width: 25px;
   height: 25px;
-  border-top: 1px solid var(--accent-color);
-  border-right: 1px solid var(--accent-color);
+  border-top: 1px solid var(--header-decoration-color);
+  border-right: 1px solid var(--header-decoration-color);
   top: 20px;
   right: 20px;
 }
@@ -35,8 +35,8 @@
   position: absolute;
   width: 25px;
   height: 25px;
-  border-bottom: 1px solid var(--accent-color);
-  border-left: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--header-decoration-color);
+  border-left: 1px solid var(--header-decoration-color);
   bottom: 20px;
   left: 20px;
 }
@@ -84,7 +84,7 @@
   font-size: 18px;
   font-weight: normal;
   line-height: 1;
-  color: var(--accent-color);
+  color: var(--theme-menu-color);
   text-transform: lowercase;
   cursor: pointer;
   border: none;
@@ -93,17 +93,23 @@
 }
 
 .header__theme-menu-button:hover {
-  border: 1px solid var(--accent-color-transparent);
+  border: 1px solid var(--theme-menu-color-transparent);
 }
 
 .header__theme-menu-button:focus-visible {
   outline: none;
-  border-bottom: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--theme-menu-color);
 }
 
 .header__theme-menu-button_active {
   pointer-events: none;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--theme-menu-color);
+}
+
+.heading {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .main__title {
@@ -116,15 +122,12 @@
   align-self: center;
 }
 
-.heading {
-  font-family: inherit;
-  font-weight: bold;
-  font-size: 18px;
+.title-decor {
+  background-color: var(--accent-color, #ff0070);
+  color: var(--subtitle-text-color);
 }
 
 .header__subtitle {
-  color: inherit;
-  background-color: var(--accent-color, #ff0070);
   max-width: calc(50% - 20px);
   justify-self: end;
   align-self: end;
@@ -136,13 +139,11 @@
 }
 
 .section__title {
-  color: var(--accent-color, #ff0070);
+  color: var(--section-title-color, #ff0070);
   margin: 0;
 }
 
 .section__text-block-title {
-  color: inherit;
-  background-color: var(--accent-color, #ff0070);
   margin: 0;
 }
 
@@ -153,10 +154,29 @@
   margin: 10px 0 0;
 }
 
+.colored-text {
+  text-decoration: none;
+  color: var(--text-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.colored-text:hover {
+  text-decoration: underline;
+}
+
+.colored-text:focus-visible {
+  outline: none;
+  border: 1px solid var(--text-color);
+}
+
 .section {
   display: grid;
   gap: 20px;
   margin: 0 0 80px;
+}
+
+.section:last-of-type {
+  margin: 0;
 }
 
 .why {
@@ -192,14 +212,33 @@
 
 .section__text-block-subtitle {
   margin: 0;
-  background-color: var(--accent-color);
-  color: inherit;
   font-weight: normal;
   font-size: 18px;
 }
 
-.colored-text {
-  text-shadow: 2px 2px 0 var(--accent-color);
+.gallery {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery__title {
+  grid-column: span 3;
+}
+
+.gallery__image {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery__image:first-of-type,
+.gallery__image:last-of-type {
+  grid-column: span 2;
+}
+
+.gallery__image:nth-of-type(2),
+.gallery__image:nth-of-type(3) {
+  grid-row: span 2;
 }
 
 .footer {
@@ -288,5 +327,24 @@
 
   .section {
     margin: 0 0 50px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .gallery__title {
+    grid-column: span 1;
+  }
+
+  .gallery__image:first-of-type,
+  .gallery__image:last-of-type {
+    grid-column: span 1;
+  }
+
+  .gallery__image:nth-of-type(2),
+  .gallery__image:nth-of-type(3) {
+    grid-row: span 1;
   }
 }

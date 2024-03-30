@@ -5,9 +5,14 @@
 
 :root {
   --background-color: #000028;
+  --background-image: url(../images/cover-image-dark.png);
   --heading-color: #DB00FF;
+  --subtitle-text-color: #000028;
   --text-color: #F1B2CE;
   --accent-color: #ff0070;
-  --accent-color-transparent: rgba(255, 0, 112, 0.4);
+  --header-decoration-color: #ff0070;
+  --section-title-color: #ff0070;
+  --theme-menu-color: #ff0070;
+  --theme-menu-color-transparent: rgba(255, 0, 112, 0.4);
   --main-font: 'IBM Plex mono';
 }
